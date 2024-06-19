@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="../../css/login.css">
+    <title>Página Login</title>
+</head>
+<style>
+  body{
+  background-image: url(../../assets/imagens/fabrica.jpg);
+  background-attachment:fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow-y: hidden;
+}
+
+</style>
+<body>
+  <a class="btn btn-secondary p-2 mx-2 mb-2" href="index.html" type="button"> < Back</a>
+    <section class="vh-100">
+        <div class="container-fluid h-custom">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-9 col-lg-6 col-xl-5">
+              <img src="../../assets/imagens/NissanGTRSpecialEdition2021_header.jpg"
+                class="img-fluid" alt="Sample image">
+            </div>
+            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+              <div class="text-center text-white my-4 bg-dark">
+                <h3>Login Page</h3>
+              </div>
+              <form>
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                  <input type="email" id="email" class="form-control form-control-lg"
+                  placeholder="Enter a valid email address" required/>
+                  <label class="form-label" for="email" style="color:white">Email address</label>
+                </div>
+      
+                <!-- Password input -->
+                <div class="form-outline mb-3">
+                  <input type="password" id="password" class="form-control form-control-lg"
+                   placeholder="Enter password" required/>
+                  <label class="form-label" for="password" style="color:white">Password</label>
+                </div>
+      
+                <div class="d-flex justify-content-between align-items-center">
+                  <!-- Checkbox -->
+                  <div class="form-check mb-0">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+                    <label class="form-check-label" for="form2Example3" style="color:white">
+                      Remember me
+                    </label>
+                  </div>
+                  <a href="#!" class="text-body" style="color:white;">Forgot password?</a>
+                </div>
+      
+                <div class="text-center text-lg-start mt-4 pt-2">
+                  <button type="button" class="btn btn-primary btn-lg"
+                    style="padding-left: 2.5rem; padding-right: 2.5rem;" onclick="validaLogin()">Login</button>
+                    <button type="button" class="btn btn-primary" onclick="leTokenSFF()">read token</button>
+                  <p class="small fw-bold mt-2 pt-1 mb-0" style="color:white">Don't have an account? <a href="signIn.html"
+                      class="link-danger">Register</a></p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+      <!--<script>
+        //Método de autenticação
+        function auth(){
+          var email = document.getElementById("email").value;
+          var password = document.getElementById("password").value;
+          if(email == "ruipires@gmail.com" && password=="12345" || email == "jmonteiro@gmail.com" && password=="54321"){
+              window.location.assign("listaClientes.html");
+              alert("Login Sucessfully");
+          } else{
+              alert("Invalid Information");
+              return;
+          } 
+        }
+      </script> -->
+
+      <script type="text/JavaScript">
+        // Função para validar o login
+        const validaLogin = async () => {
+          var dados = {
+            email: document.getElementById("email").value,
+            password: document.getElementById("password").value,
+          };
+          const response= await fetch("http://localhost:4242/api/v2/auth/signin", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(dados),
+          })
+          console.log(response.ok);
+          dados= await  response.json()
+          if(!response.ok){
+            alert("Erro ao fazer login");
+          }
+          else{
+            alert("Login efetuado com sucesso");
+            console.log(dados);
+            // Guardar o token no local storage
+            localStorage.setItem("token", dados.token);
+            window.location.href = "http://127.0.0.1:5500/templates/frontEnd/listaClientes.html";
+          }
+      };
+
+      const leTokenSFF = async () => {
+    var dados = {
+      token: localStorage.getItem("token"),
+    };
+    console.log(JSON.stringify(dados));
+    const response= await fetch("http://localhost:4242/api/v2/auth/letoken", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(dados),
+    })
+    console.log(response);
+    dados= await  response.json()
+    console.log(dados);
+    if(!response.ok){
+      alert("Erro ao fazer login");
+    }
+    else{
+      alert("token lido com sucesso");
+      console.log(dados);
+    }
+};
+
+    </script>
+    
+
+</body>
+</html>

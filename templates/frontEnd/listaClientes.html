@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="../../css/listaClientes.css" rel="stylesheet">
+    <title>Lista de clientes</title>
+</head>
+<style>
+    body {
+        background-image: url(../../assets/imagens/fabrica.jpg);
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: cover;
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+</style>
+<body>
+    <div>
+        <h1 class="text-center text-white bg-secondary" style="width: fit-content; margin: 0 auto; font-size: 50px;">Client List</h1>
+    </div>
+    <div>
+        <div class="d-flex justify-content-between mx-3 my-2">
+            <a class="btn btn-secondary p-2" href="signIn.html" type="button">Profile</a>
+            <a class="btn btn-secondary p-2" href="login.html" role="button">LogOut</a>
+        </div>
+    </div>
+    <section class="p-3">
+        <div class="row">
+            <div class="col-12">
+                <button class="btn btn-primary newUser" data-bs-toggle="modal" data-bs-target="#userForm">Add Information <i class="bi bi-people"></i></button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-striped table-hover mt-3 text-center table-bordered">
+                    <thead class="bg-danger">
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Brand</th>
+                            <th>Problems</th>
+                            <th>Inspection Date</th>
+                            <th>Did it pass inspection?</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="data" class="bg-light"></tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Form -->
+    <div class="modal fade" id="userForm">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Fill the Form</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="#" id="myForm">
+                        <div class="inputField">
+                            <div>
+                                <label for="name">Name:</label>
+                                <input type="text" id="name" required>
+                            </div>
+                            <div>
+                                <label for="brand">Brand:</label>
+                                <input type="text" id="brand" required>
+                            </div>
+                            <div>
+                                <label for="problems">Problems:</label>
+                                <input type="text" id="problems" required>
+                            </div>
+                            <div>
+                                <label for="date">Date Inspection:</label>
+                                <input type="date" id="date" required>
+                            </div>
+                            <div>
+                                <label>Pass Inspection?:</label>
+                                <select id="passou" required>
+                                    <option value="Sim">Yes</option>
+                                    <option value="Não">No</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" form="myForm" class="btn btn-primary submit">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Read Data Modal -->
+    <div class="modal fade" id="readData">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Profile</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="#" id="readForm">
+                        <div class="inputField">
+                            <div>
+                                <label for="showName">Name:</label>
+                                <input type="text" id="showName" disabled>
+                            </div>
+                            <div>
+                                <label for="showBrand">Brand:</label>
+                                <input type="text" id="showBrand" disabled>
+                            </div>
+                            <div>
+                                <label for="showProblems">Problems:</label>
+                                <input type="text" id="showProblems" disabled>
+                            </div>
+                            <div>
+                                <label for="showDate">Date Inspection:</label>
+                                <input type="date" id="showDate" disabled>
+                            </div>
+                            <div>
+                                <label for="showPassou">Pass Inspection?:</label>
+                                <select id="showPassou" disabled>
+                                    <option value="Sim">Yes</option>
+                                    <option value="Não">No</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="listaClientes.js" defer></script>
+</html>
+
+

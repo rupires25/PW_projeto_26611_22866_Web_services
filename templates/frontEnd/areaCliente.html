@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AreaCliente</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../css/areaCliente.css">
+  </head>
+  <style>
+    body{
+        background-image: url(../../assets/imagens/fabrica.jpg);
+        background-attachment:fixed;
+        background-repeat: no-repeat;
+        background-size: cover;
+        overflow-x: hidden;
+    }
+</style>
+  <body>
+    <div>
+      <h1 class="text-center bg-secondary">
+        Client Area
+      </h1>
+      <a class="btn btn-secondary p-2 mx-2 mt-2 mb-2" href="index.html" type="button"> < Back</a>
+    </div>
+    <div class="container-fluid"> 
+      <div class="row" id="cardRow"> 
+      </div> 
+    </div>
+    <div class="modal fade" id="modalContent" tabindex="-1" role="dialog" aria-labelledby="modalContentLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalContentLabel"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" id="modalBody"></div>
+          <h5 class="modal-title mx-3" id="modalContentLabel2"></h5> 
+          <p class="mx-3" id="modalDoc"></p>
+        </div>
+      </div>
+    </div>
+    <script> 
+    //Criação das cards e leitura dos dados JSON
+     const cardRow = document.getElementById('cardRow');
+     fetch('preco.json')
+     .then(response => response.json())
+     .then(data => {
+      let cards = '';
+      data.forEach(item => {
+      cards += `
+        <div class="col-xl-4">
+          <div class="card">
+            <img src="${item.imagem ? item.imagem : 'placeholder.jpg'}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">${item.category}</h5>
+              <p class="card-text">Price: ${item.price}</p>
+              <button class="btn btn-primary" data-toggle="modal" data-target="#modalContent" data-title="${item.title}" 
+              data-newtitle="${item.newtitle ? item.newtitle: 'No description available'}" data-body="${item.shedule ? item.shedule: 'No description available' }" 
+              data-newinfo="${item.documentos ? item.documentos: 'No description available' }">Ver mais</button>
+            </div>
+          </div>
+        </div>
+       `;
+      });
+      cardRow.innerHTML = cards;
+
+     // Atualiza o conteúdo do modal ao clicar no botão "Ver mais"
+     $('.btn').click(function() {
+      const title = $(this).data('title');
+      const newTitle = $(this).data('newtitle');
+      const body = $(this).data('body');
+      const newinfo = $(this).data('newinfo');
+      document.getElementById('modalContentLabel').innerText = title;
+      document.getElementById('modalBody').innerText = body;
+      document.getElementById('modalContentLabel2').innerText = newTitle; 
+      document.getElementById('modalDoc').innerText = newinfo;
+    });
+  });
+      </script>
+
+    
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+</html>

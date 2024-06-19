@@ -1,0 +1,92 @@
+[
+  {
+    "category": "Light vehicles",
+    "price": "10€",
+    "imagem": "../../assets/veiculos/ligeiros.jpg",
+    "title": "Information",
+    "shedule": "Monday to Friday from 9:00 a.m. to 8:00 p.m., Saturday from 9:00 a.m. to 1:00 p.m.",
+    "newtitle": "Important!",
+    "documentos": "Registration certificate or carnet, title deed and last inspection form"
+  },
+
+  {
+    "category": "Heavy vehicles",
+    "price": "15€",
+    "imagem": "../../assets/veiculos/pesados.jpg",
+    "title": "Information",
+    "shedule": "Monday to Friday from 9:00 a.m. to 8:00 p.m., Saturday from 9:00 a.m. to 1:00 p.m.",
+    "newtitle": "Important!",
+    "documentos": "Registration certificate or carnet, title deed and last inspection form"
+  },
+
+  {
+    "category": "Public transport",
+    "price": "20€",
+    "imagem":"../../assets/veiculos/publicos.jpg",
+    "title": "Information",
+    "shedule": "Monday to Friday from 9:00 a.m. to 8:00 p.m., Saturday from 9:00 a.m. to 1:00 p.m.",
+    "newtitle": "Important!",
+    "documentos": "Registration certificate or carnet, title deed and last inspection form"
+  },
+
+  {
+    "category": "Motorcycles",
+    "price": "10€",
+    "imagem":"../../assets/veiculos/motociclos.jpg",
+    "title": "Information",
+    "shedule": "Monday to Friday from 9:00 a.m. to 8:00 p.m., Saturday from 9:00 a.m. to 1:00 p.m.",
+    "newtitle": "Important!",
+    "documentos": "Registration certificate or carnet, title deed and last inspection form"
+  },
+
+  {
+    "category": "Ambulances",
+    "price": "15€",
+    "imagem":"../../assets/veiculos/ambulancia.jpg",
+    "title": "Information",
+    "shedule": "Monday to Friday from 9:00 a.m. to 8:00 p.m., Saturday from 9:00 a.m. to 1:00 p.m.",
+    "newtitle": "Important!",
+    "documentos": "Registration certificate or carnet, title deed and last inspection form"
+  },
+
+  {
+    "category": "Instruction cars",
+    "price": "15€",
+    "imagem":"../../assets/veiculos/instrucao.jpg",
+    "title": "Information",
+    "shedule": "Monday to Friday from 9:00 a.m. to 8:00 p.m., Saturday from 9:00 a.m. to 1:00 p.m.",
+    "newtitle": "Important!",
+    "documentos": "Registration certificate or carnet, title deed and last inspection form"
+  },
+  
+  {
+    "category": "Trailers",
+    "price": "30€",
+    "imagem":"../../assets/veiculos/reboque.jpg",
+    "title": "InformationImportant",
+    "shedule": "Monday to Friday from 9:00 a.m. to 8:00 p.m., Saturday from 9:00 a.m. to 1:00 p.m.",
+    "newtitle": "Important!",
+    "documentos": "Registration certificate or carnet, title deed and last inspection form"
+  },
+  
+  {
+    "category": "Tricycles",
+    "price": "15€",
+    "imagem":"../../assets/veiculos/triciclos.jpeg",
+    "title": "InformationImportant",
+    "shedule": "Monday to Friday from 9:00 a.m. to 8:00 p.m., Saturday from 9:00 a.m. to 1:00 p.m.",
+    "newtitle": "Important!",
+    "documentos": "Registration certificate or carnet, title deed and last inspection form"
+  },
+  
+  {
+    "category": "Quadricycles",
+    "price": "20€",
+    "imagem":"../../assets/veiculos/quadriciclos.jpg",
+    "title": "InformationImportant",
+    "shedule": "Monday to Friday from 9:00 a.m. to 8:00 p.m., Saturday from 9:00 a.m. to 1:00 p.m.",
+    "newtitle": "Important!",
+    "documentos": "Registration certificate or carnet, title deed and last inspection form"
+  }
+  
+]
