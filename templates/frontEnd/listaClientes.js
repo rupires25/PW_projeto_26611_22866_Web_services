@@ -7,7 +7,7 @@ function Informacao() {
   var userName = document.getElementById("name");
   var brand = document.getElementById("brand");
   var problems = document.getElementById("problems");
-  var Inspdate = document.getElementById("Idate");
+  var Inspdate = document.getElementById("date");
   var passou = document.getElementById("passou");
   var submitBtn = document.querySelector(".submit");
   var userInfo = document.getElementById("data");
@@ -18,6 +18,7 @@ function Informacao() {
   let getData = localStorage.getItem('userProfile') ? JSON.parse(localStorage.getItem('userProfile')) : []
 
   let isEdit = false, editId
+
   showInfo()
 
     newUserBtn.addEventListener('click', () => {
@@ -54,22 +55,22 @@ function showInfo(){
 }
 showInfo()
 
-function readInfo(name, brand, problems, Idate, passou){
+function readInfo(name, brand, problems, date, passou){
   debugger
   document.querySelector('#showName').value = name;
   document.querySelector("#showBrand").value = brand;
   document.querySelector("#showProblems").value = problems;
-  document.querySelector("#showDate").value = Idate;
+  document.querySelector("#showDate").value = date;
   document.querySelector('#showPassou').value = passou;
 }
 
-function editInfo(index, name, Brand, Problems, Idate, Passou){
+function editInfo(index, name, Brand, Problems, date, Passou){
   isEdit = true
   editId = index,
   userName.value = name,
   brand.value = Brand,
   problems.value = Problems,
-  Inspdate.value = Idate,
+  Inspdate.value = date,
   passou.value = Passou,
   submitBtn.innerText = "Update"
   modalTitle.innerText = "Update The Form"
@@ -91,7 +92,7 @@ form.addEventListener('submit', (e)=> {
       clienteName: userName.value,
       clienteBrand: brand.value,
       clienteProblems: problems.value,
-      clienteInspdate: Idate.value,
+      clienteInspdate: date.value,
       clientePassou: passou.value
   }
 
